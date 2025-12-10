@@ -363,14 +363,14 @@ main {
   position: relative;
   overflow: visible;
   display: flex;
-  align-items: center;
-  padding-right: 220px;
+  align-items: left;
+  padding-right: 290px;
 }
 
 .heading-pattern::before {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 100px;
   right: -250px;
   width: 840px;
   height: 620px;
@@ -776,6 +776,19 @@ select {
   padding: 2.5rem 4vw;
   background: var(--primary);
   color: #e8f5f0;
+}
+
+.section-divider {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0 4rem;
+}
+
+.section-divider img {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  opacity: 0.9;
 }
 
 .footer h5 {
