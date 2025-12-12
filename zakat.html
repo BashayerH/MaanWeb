@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>زكاة علم | معن</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="zakat-page">
+  <header class="topbar">
+    <button class="menu-toggle" aria-label="القائمة" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="logo" aria-label="الشعار">
+      <img src="./assets/images/LOGO_colored.png" alt="شعار معن" class="logo-img" id="logo-img" loading="lazy">
+      <span class="logo-text">معن | Maan</span>
+    </div>
+    <nav class="nav-links" aria-label="روابط رئيسية" id="nav-links">
+      <a href="index.html#about">من نحن</a>
+      <a href="index.html#courses">الدورات</a>
+      <a href="index.html#community">مجتمعنا</a>
+      <a href="index.html#careers">الفرص</a>
+      <a href="index.html#contact">تواصل معنا</a>
+    </nav>
+    <div class="auth-actions" id="auth-actions">
+      <button class="ghost">تسجيل</button>
+      <button class="solid">إنشاء حساب</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="zakat-hero-split" style="margin-top: 100px;">
+      <div class="zakat-hero-right">
+        <div class="zakat-hero-pattern-left">
+          <img src="./assets/patren/code_04.png" alt="pattern" loading="lazy">
+        </div>
+        <div class="zakat-hero-category">
+          <span>تعليم</span>
+          <div class="zakat-hero-divider"></div>
+        </div>
+        <h2 class="zakat-hero-heading">برنامج زكاة علم</h2>
+        <p class="zakat-hero-description">
+          برنامج تفاعلي لتبادل الشروحات والمفاهيم الأساسية للمواد بين الطلاب، بمواد مرئية وتفاعلية مصممة لتمكين التعلم الجماعي.
+        </p>
+        <div class="zakat-hero-actions">
+          <button class="zakat-hero-btn">
+            <span>شارك</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 1V15M1 8H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button class="zakat-hero-btn">إرسال إشعار</button>
+        </div>
+        <p class="zakat-hero-count">0 طلاب مسجلين</p>
+      </div>
+    </section>
+
+    <section class="section-block" id="watch-learn">
+      <div class="section-heading">
+        <h3>شاهد وتعلم من الآخرين</h3>
+        <p class="muted">استكشف مكتبة واسعة من الشروحات والفيديوهات التعليمية</p>
+      </div>
+
+      <div class="video-section-latest">
+          
+        <h4 class="latest-video-title">آخر فيديو تم إضافته</h4>
+
+<!--        <div class="latest-video-container">-->
+<!--          <div class="latest-video-player">-->
+<!--            <div class="video-thumbnail placeholder">-->
+<!--              <div class="video-overlay">-->
+<!--                <div class="video-badge">-->
+<!--                  <span>زكاة علم</span>-->
+<!--                </div>-->
+<!--                <button class="video-play-btn" aria-label="تشغيل الفيديو">-->
+<!--                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--                    <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>-->
+<!--                  </svg>-->
+<!--                </button>-->
+<!--                <button class="video-copy-link" aria-label="نسخ الرابط">-->
+<!--                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--                    <path d="M10.5 1H3.5C2.67 1 2 1.67 2 2.5V9.5H3.5V2.5H10.5V1ZM12.5 3H5.5C4.67 3 4 3.67 4 4.5V13.5C4 14.33 4.67 15 5.5 15H12.5C13.33 15 14 14.33 14 13.5V4.5C14 3.67 13.33 3 12.5 3ZM12.5 13.5H5.5V4.5H12.5V13.5Z" fill="currentColor"/>-->
+<!--                  </svg>-->
+<!--                  <span>نسخ الرابط</span>-->
+<!--                </button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="video-info">-->
+<!--              <h5>مقدمة في الكيمياء العضوية</h5>-->
+<!--              <p class="muted">شرح شامل للمفاهيم الأساسية في الكيمياء العضوية مع أمثلة تطبيقية</p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <div class="video-content-layout">
+        <div class="video-main">
+          <div class="video-player-wrapper">
+            <div class="video-player">
+              <!-- Option 1: HTML5 Video (for self-hosted videos) -->
+              <div class="video-container">
+                <video 
+                  id="main-video" 
+                  class="video-element" 
+                  poster="./assets/videos/thumbnail.jpg" 
+                  controls
+                  preload="metadata"
+                >
+                  <source src="./assets/videos/video.mp4" type="video/mp4">
+                  <source src="./assets/videos/video.webm" type="video/webm">
+                  متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+                <div class="video-overlay" id="video-overlay">
+                  <div class="video-badge">
+                    <span>زكاة علم</span>
+                  </div>
+                  <button class="video-play-btn" id="play-btn" aria-label="تشغيل الفيديو">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
+                    </svg>
+                  </button>
+                  <button class="video-copy-link" id="copy-link-btn" aria-label="نسخ الرابط">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10.5 1H3.5C2.67 1 2 1.67 2 2.5V9.5H3.5V2.5H10.5V1ZM12.5 3H5.5C4.67 3 4 3.67 4 4.5V13.5C4 14.33 4.67 15 5.5 15H12.5C13.33 15 14 14.33 14 13.5V4.5C14 3.67 13.33 3 12.5 3ZM12.5 13.5H5.5V4.5H12.5V13.5Z" fill="currentColor"/>
+                    </svg>
+                    <span>نسخ الرابط</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="video-details">
+              <h4>مقدمة في الكيمياء العضوية</h4>
+              <p class="muted">شرح شامل للمفاهيم الأساسية في الكيمياء العضوية مع أمثلة تطبيقية تفصيلية تساعد على الفهم العميق للموضوع.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-sidebar">
+          <h5 class="sidebar-heading">أقسام الصفحة</h5>
+          <nav class="video-nav">
+            <a href="#watch-learn" class="video-nav-item active">
+              <span class="nav-dot"></span>
+              <span>عن البرنامج</span>
+            </a>
+            <a href="#lecturers" class="video-nav-item">
+              <span class="nav-dot"></span>
+              <span>المحاضرون</span>
+              <span class="nav-arrow">←</span>
+            </a>
+            <a href="#join" class="video-nav-item">
+              <span class="nav-dot"></span>
+              <span>انضم إلينا</span>
+              <span class="nav-arrow">←</span>
+            </a>
+          </nav>
+
+          <div class="sidebar-section">
+            <h6 class="sidebar-subheading">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 0C3.58 0 0 3.58 0 8C0 12.42 3.58 16 8 16C12.42 16 16 12.42 16 8C16 3.58 12.42 0 8 0ZM8 14C4.69 14 2 11.31 2 8C2 4.69 4.69 2 8 2C11.31 2 14 4.69 14 8C14 11.31 11.31 14 8 14Z" fill="currentColor"/>
+                <path d="M8 4L8 8L11 10" stroke="currentColor" stroke-width="2" fill="none"/>
+              </svg>
+              آلية البرنامج
+            </h6>
+            <p class="sidebar-text">التعليم المدمج</p>
+            <p class="sidebar-text">التعلم التفاعلي</p>
+          </div>
+
+          <div class="sidebar-section">
+            <h6 class="sidebar-subheading">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="3" width="12" height="10" rx="1" stroke="currentColor" stroke-width="2" fill="none"/>
+                <path d="M6 3V1M10 3V1" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              نوع البرنامج
+            </h6>
+            <p class="sidebar-text">برنامج تعليمي تفاعلي</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-heading" style="margin-top: 3rem; margin-bottom: 1.5rem;">
+        <h3>المواد المتاحة</h3>
+      </div>
+
+      <div class="media-grid">
+        <article class="media-card">
+          <div class="media-visual placeholder"></div>
+          <div class="media-body">
+            <h4>أساسيات الفيزياء الطبية</h4>
+            <p class="muted">تعلم المبادئ الأساسية للفيزياء وتطبيقاتها في المجال الطبي</p>
+            <div class="media-actions">
+              <button class="solid">شاهد الآن</button>
+            </div>
+          </div>
+        </article>
+        <article class="media-card">
+          <div class="media-visual placeholder"></div>
+          <div class="media-body">
+            <h4>شرح تشريح الجهاز العصبي</h4>
+            <p class="muted">رحلة تفصيلية داخل الجهاز العصبي البشري مع الرسوم التوضيحية</p>
+            <div class="media-actions">
+              <button class="solid">شاهد الآن</button>
+            </div>
+          </div>
+        </article>
+        <article class="media-card">
+          <div class="media-visual placeholder"></div>
+          <div class="media-body">
+            <h4>مبادئ الإحصاء الحيوي</h4>
+            <p class="muted">فهم أساسيات الإحصاء وتطبيقاته في البحث العلمي والطبي</p>
+            <div class="media-actions">
+              <button class="solid">شاهد الآن</button>
+            </div>
+          </div>
+        </article>
+        <article class="media-card">
+          <div class="media-visual placeholder"></div>
+          <div class="media-body">
+            <h4>شرح الكيمياء الحيوية</h4>
+            <p class="muted">استكشف التفاعلات الكيميائية في الكائنات الحية</p>
+            <div class="media-actions">
+              <button class="solid">شاهد الآن</button>
+            </div>
+          </div>
+        </article>
+        <article class="media-card">
+          <div class="media-visual placeholder"></div>
+          <div class="media-body">
+            <h4>أساسيات علم الأدوية</h4>
+            <p class="muted">تعلم كيفية عمل الأدوية وتأثيرها على الجسم</p>
+            <div class="media-actions">
+              <button class="solid">شاهد الآن</button>
+            </div>
+          </div>
+        </article>
+        <article class="media-card">
+          <div class="media-visual placeholder"></div>
+          <div class="media-body">
+            <h4>مقدمة في علم الأحياء</h4>
+            <p class="muted">تعرف على أساسيات علم الأحياء والخلية</p>
+            <div class="media-actions">
+              <button class="solid">شاهد الآن</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="section-divider">
+      <img src="./assets/patren/code_07.png" alt="divider" loading="lazy">
+    </div>
+
+    <section class="section-block team" id="lecturers">
+      <div class="section-heading">
+        <h3>المحاضرون والمشاركون</h3>
+        <p class="muted">تعرف على من يشارك معرفتهم وخبراتهم في البرنامج</p>
+      </div>
+      <div class="card-grid" style="margin-top: 2rem;">
+        <article class="card profile">
+          <div class="avatar placeholder-circle"></div>
+          <div>
+            <h4>د. أحمد محمد</h4>
+            <p class="muted">أستاذ الكيمياء العضوية</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">خبرة أكثر من 15 عاماً في التدريس والبحث العلمي</p>
+          </div>
+        </article>
+        <article class="card profile">
+          <div class="avatar placeholder-circle"></div>
+          <div>
+            <h4>د. فاطمة علي</h4>
+            <p class="muted">أستاذة الفيزياء الطبية</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">متخصصة في تطبيقات الفيزياء في المجال الطبي</p>
+          </div>
+        </article>
+        <article class="card profile">
+          <div class="avatar placeholder-circle"></div>
+          <div>
+            <h4>د. خالد سعيد</h4>
+            <p class="muted">أستاذ التشريح</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">خبير في التشريح البشري والرسوم التوضيحية</p>
+          </div>
+        </article>
+        <article class="card profile">
+          <div class="avatar placeholder-circle"></div>
+          <div>
+            <h4>د. سارة حسن</h4>
+            <p class="muted">أستاذة الإحصاء الحيوي</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">متخصصة في تحليل البيانات الطبية والبحث العلمي</p>
+          </div>
+        </article>
+        <article class="card profile">
+          <div class="avatar placeholder-circle"></div>
+          <div>
+            <h4>د. عمر عبدالله</h4>
+            <p class="muted">أستاذ الكيمياء الحيوية</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">خبير في التفاعلات الكيميائية الحيوية</p>
+          </div>
+        </article>
+        <article class="card profile">
+          <div class="avatar placeholder-circle"></div>
+          <div>
+            <h4>د. نورا إبراهيم</h4>
+            <p class="muted">أستاذة علم الأدوية</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">متخصصة في علم الأدوية والعلاج الدوائي</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="section-divider">
+      <img src="./assets/patren/code_07.png" alt="divider" loading="lazy">
+    </div>
+
+    <section class="join-section" id="join">
+      <div class="join-content">
+        <div>
+          <p class="eyebrow">انضم إلينا</p>
+          <h3>كن جزءاً من مجتمع زكاة علم</h3>
+          <p class="muted">
+            هل تريد مشاركة معرفتك وخبراتك مع الآخرين؟ انضم إلى مجتمعنا التعليمي وكن محاضراً أو مشاركاً نشطاً في البرنامج.
+          </p>
+        </div>
+        <div class="join-actions">
+          <button class="solid">تقديم طلب محاضر</button>
+          <button class="ghost">انضم كطالب</button>
+<!--          <a href="index.html" class="ghost">عودة للصفحة الرئيسية</a>-->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="footer__col">
+      <h5>عن مسك</h5>
+      <ul>
+        <li><a href="#">عن مسك</a></li>
+        <li><a href="#">انضم لشركائنا</a></li>
+        <li><a href="#">انضم لفريقنا</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h5>المركز الإعلامي</h5>
+      <ul>
+        <li><a href="#">أخبار مسك</a></li>
+        <li><a href="#">معرض الصور</a></li>
+        <li><a href="#">مكتبة الفيديو</a></li>
+        <li><a href="#">ملفات وتقارير</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h5>تواصل معنا</h5>
+      <ul>
+        <li><a href="mailto:info@misk.com">info@misk.com</a></li>
+        <li><a href="tel:+966555555555">+966 555 555 555</a></li>
+      </ul>
+      <div class="store-buttons">
+        <button class="outline">App Store</button>
+        <button class="outline">Google Play</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener("scroll", () => {
+      const topbar = document.querySelector(".topbar");
+      const logoImg = document.getElementById("logo-img");
+      const isZakatPage = document.body.classList.contains("zakat-page");
+      
+      if (window.scrollY > 50) {
+        topbar.classList.add("scrolled");
+        // Keep logo consistent on zakat page
+        if (!isZakatPage) {
+          logoImg.src = "./assets/images/LOGO_colored.png";
+        }
+      } else {
+        topbar.classList.remove("scrolled");
+        // Keep logo consistent on zakat page
+        if (!isZakatPage) {
+          logoImg.src = "./assets/images/LOGO_all_white.png";
+        }
+      }
+    });
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+    const authActions = document.getElementById("auth-actions");
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle("active");
+        navLinks.classList.toggle("active");
+        authActions.classList.toggle("active");
+      });
+
+      navLinks.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          menuToggle.classList.remove("active");
+          navLinks.classList.remove("active");
+          authActions.classList.remove("active");
+        });
+      });
+    }
+
+    // Video Player Functionality
+    const video = document.getElementById("main-video");
+    const playBtn = document.getElementById("play-btn");
+    const videoOverlay = document.getElementById("video-overlay");
+    const copyLinkBtn = document.getElementById("copy-link-btn");
+
+    if (video && playBtn && videoOverlay) {
+      // Play button click
+      playBtn.addEventListener("click", () => {
+        video.play();
+        videoOverlay.style.display = "none";
+      });
+
+      // Show overlay when video is paused
+      video.addEventListener("pause", () => {
+        videoOverlay.style.display = "flex";
+      });
+
+      // Hide overlay when video is playing
+      video.addEventListener("play", () => {
+        videoOverlay.style.display = "none";
+      });
+
+      // Copy link functionality
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener("click", () => {
+          const videoUrl = window.location.href;
+          navigator.clipboard.writeText(videoUrl).then(() => {
+            copyLinkBtn.innerHTML = `
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.5 1.5L5.5 9.5M5.5 1.5L13.5 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <span>تم النسخ!</span>
+            `;
+            setTimeout(() => {
+              copyLinkBtn.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.5 1H3.5C2.67 1 2 1.67 2 2.5V9.5H3.5V2.5H10.5V1ZM12.5 3H5.5C4.67 3 4 3.67 4 4.5V13.5C4 14.33 4.67 15 5.5 15H12.5C13.33 15 14 14.33 14 13.5V4.5C14 3.67 13.33 3 12.5 3ZM12.5 13.5H5.5V4.5H12.5V13.5Z" fill="currentColor"/>
+                </svg>
+                <span>نسخ الرابط</span>
+              `;
+            }, 2000);
+          });
+        });
+      }
+    }
+  </script>
+</body>
+</html>
+
