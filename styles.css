@@ -438,9 +438,16 @@ img {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 8px;
+  padding: 14px 12px;
   z-index: 1001;
   justify-self: start;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 48px;
+  overflow: visible;
+  position: relative;
+  box-sizing: border-box;
 }
 
 .menu-toggle span {
@@ -449,6 +456,8 @@ img {
   background: #fff;
   border-radius: 2px;
   transition: all 0.3s ease;
+  display: block;
+  position: relative;
 }
 
 .topbar.scrolled .menu-toggle span {
@@ -456,7 +465,8 @@ img {
 }
 
 .menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(8px, 8px);
+  transform: rotate(45deg) translate(4px, 4px);
+  transform-origin: center;
 }
 
 .menu-toggle.active span:nth-child(2) {
@@ -464,7 +474,8 @@ img {
 }
 
 .menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
+  transform: rotate(-45deg) translate(5px, -5px);
+  transform-origin: center;
 }
 
 .logo {
@@ -477,6 +488,8 @@ img {
   transition: color 0.3s ease;
   justify-self: start;
   grid-column: 2;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .topbar:not(.scrolled) .logo {
@@ -487,6 +500,18 @@ img {
   height: 75px;
   width: auto;
   display: block;
+}
+
+.logo-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 968px) {
+  .logo-text {
+    display: none;
+  }
 }
 
 .nav-links {
@@ -2171,12 +2196,19 @@ select {
 
   .topbar {
     grid-template-columns: auto 1fr;
-    padding: 12px 20px;
+    padding: 16px 20px 16px 20px;
+    overflow: visible;
   }
 
   .menu-toggle {
     display: flex;
     grid-column: 1;
+    overflow: visible;
+    padding: 14px 12px;
+    margin-left: -12px;
+    margin-right: 0;
+    min-width: 48px;
+    min-height: 48px;
   }
 
   .logo {

@@ -13,10 +13,10 @@
       <span></span>
       <span></span>
     </button>
-    <div class="logo" aria-label="الشعار">
+    <a href="index.html" class="logo" aria-label="الشعار">
       <img src="./assets/images/LOGO_colored.png" alt="شعار معن" class="logo-img" id="logo-img" loading="lazy">
       <span class="logo-text">معن | Maan</span>
-    </div>
+    </a>
     <nav class="nav-links" aria-label="روابط رئيسية" id="nav-links">
       <a href="index.html#tracks">المسارات</a>
       <a href="index.html#community">مجتمعنا</a>
@@ -147,14 +147,33 @@
   </main>
 
   <script>
+    // Function to update logo based on screen size
+    const updateLogo = () => {
+      const logoImg = document.getElementById("logo-img");
+      const isMobile = window.innerWidth <= 968;
+      
+      if (isMobile) {
+        logoImg.src = "./assets/images/LOGO_mobile_colore_black.svg";
+      } else {
+        logoImg.src = "./assets/images/LOGO_colored.png";
+      }
+    };
+
+    // Update logo on load and resize
+    updateLogo();
+    window.addEventListener("resize", updateLogo);
+
     // Topbar scroll effect
     const topbar = document.querySelector('.topbar');
 
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        topbar.classList.add('scrolled');
-      } else {
-        topbar.classList.remove('scrolled');
+      const isMobile = window.innerWidth <= 968;
+      if (!isMobile) {
+        if (window.scrollY > 50) {
+          topbar.classList.add('scrolled');
+        } else {
+          topbar.classList.remove('scrolled');
+        }
       }
     });
 
