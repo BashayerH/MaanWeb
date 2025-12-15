@@ -2227,7 +2227,8 @@ select {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 80px 2rem 2rem;
+    padding: 120px 2rem 2rem;
+    margin-top: 0;
     gap: 0;
     box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease;
@@ -2242,8 +2243,13 @@ select {
   .nav-links a {
     width: 100%;
     padding: 1rem;
+    margin-top: 0.5rem;
     border-bottom: 1px solid var(--border);
     color: var(--primary);
+  }
+
+  .nav-links a:first-child {
+    margin-top: 0;
   }
 
   .topbar:not(.scrolled) .nav-links a {
