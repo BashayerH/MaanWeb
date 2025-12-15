@@ -370,8 +370,18 @@
     const navLinks = document.getElementById("nav-links");
     const authActions = document.getElementById("auth-actions");
 
+    // Function to close menu
+    const closeMenu = () => {
+      if (menuToggle) {
+        menuToggle.classList.remove("active");
+        navLinks.classList.remove("active");
+        authActions.classList.remove("active");
+      }
+    };
+
     if (menuToggle) {
-      menuToggle.addEventListener("click", () => {
+      menuToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
         menuToggle.classList.toggle("active");
         navLinks.classList.toggle("active");
         authActions.classList.toggle("active");
@@ -379,10 +389,28 @@
 
       navLinks.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", () => {
-          menuToggle.classList.remove("active");
-          navLinks.classList.remove("active");
-          authActions.classList.remove("active");
+          closeMenu();
         });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener("click", (e) => {
+        const isClickInsideMenu = navLinks.contains(e.target) || 
+                                  authActions.contains(e.target) || 
+                                  menuToggle.contains(e.target);
+        
+        if (!isClickInsideMenu && navLinks.classList.contains("active")) {
+          closeMenu();
+        }
+      });
+
+      // Prevent menu from closing when clicking inside it
+      navLinks.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+
+      authActions.addEventListener("click", (e) => {
+        e.stopPropagation();
       });
     }
 
