@@ -2162,6 +2162,39 @@ select {
   }
 }
 
+/* Ensure footer placeholder is visible */
+#footer-placeholder {
+  display: block !important;
+  width: 100%;
+  min-height: 1px;
+  visibility: visible;
+  opacity: 1;
+}
+
+#footer-placeholder .footer {
+  display: block !important;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Ensure footer is visible on mobile and tablet */
+@media (max-width: 968px) {
+  #footer-placeholder {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  #footer-placeholder .footer {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
 @media (max-width: 968px) {
   .tracks {
     padding: 2rem 2vw;
