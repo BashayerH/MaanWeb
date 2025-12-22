@@ -15,7 +15,7 @@
     </button>
     <a href="index.html" class="logo" aria-label="الشعار">
       <img src="./assets/images/LOGO_colored.png" alt="شعار معن" class="logo-img" id="logo-img" loading="lazy">
-      <span class="logo-text">معن | Maan</span>
+<!--      <span class="logo-text">معن | Maan</span>-->
     </a>
     <nav class="nav-links" aria-label="روابط رئيسية" id="nav-links">
       <a href="index.html#tracks">المسارات</a>
@@ -23,10 +23,7 @@
       <a href="about.html">عن معَن</a>
         <a href="#contact">تواصل معنا</a>
     </nav>
-    <div class="auth-actions" id="auth-actions">
-      <button class="ghost">تسجيل</button>
-      <button class="solid">إنشاء حساب</button>
-    </div>
+    <a href="index.html" class="logo-text">معن | Maan</a>
   </header>
 
   <main>
@@ -100,14 +97,12 @@
     // Mobile menu toggle
     const menuToggle = document.getElementById("menu-toggle");
     const navLinks = document.getElementById("nav-links");
-    const authActions = document.getElementById("auth-actions");
 
     // Function to close menu
     const closeMenu = () => {
       if (menuToggle) {
         menuToggle.classList.remove("active");
         navLinks.classList.remove("active");
-        authActions.classList.remove("active");
       }
     };
 
@@ -116,7 +111,6 @@
         e.stopPropagation();
         menuToggle.classList.toggle("active");
         navLinks.classList.toggle("active");
-        authActions.classList.toggle("active");
       });
 
       navLinks.querySelectorAll("a").forEach(link => {
@@ -127,7 +121,6 @@
 
       document.addEventListener("click", (e) => {
         const isClickInsideMenu = navLinks.contains(e.target) || 
-                                  authActions.contains(e.target) || 
                                   menuToggle.contains(e.target);
         
         if (!isClickInsideMenu && navLinks.classList.contains("active")) {
@@ -138,12 +131,12 @@
       navLinks.addEventListener("click", (e) => {
         e.stopPropagation();
       });
-
-      authActions.addEventListener("click", (e) => {
-        e.stopPropagation();
-      });
     }
   </script>
+  <!-- ScrollReveal.js -->
+  <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+  <script src="./js/scrollreveal-init.js"></script>
+  <script src="./js/footer.js"></script>
 </body>
 </html>
 
