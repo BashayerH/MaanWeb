@@ -17,10 +17,33 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
 .media-visual {
-  min-height: 180px;
+ height: 250px;
+  min-height: 250px;
+  position: relative;
+  overflow: hidden;
+  width: calc(100% + 2px);
+  margin: 0 -1px;
+  padding: 0;
+  background: transparent;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+.media-visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   position: relative;
 }
 
@@ -609,6 +632,14 @@ button {
 .solid {
   background: var(--secondary);
   color: #fff;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+a .solid,
+a.solid {
+  text-decoration: none;
 }
 
 .solid:hover {
@@ -793,6 +824,16 @@ main {
     #f7fbfa;
   min-height: 240px;
   border: 1px dashed rgba(18, 58, 87, 0.32);
+}
+
+.media-visual .placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
 .placeholder-circle {
@@ -1502,8 +1543,17 @@ main {
   stroke-dashoffset: 0 !important;
 }
 
+.track-content-wrapper {
+  max-width: 1400px;
+  margin: 1.0rem auto 0;
+  width: 100%;
+  padding: 0 3vw;
+  box-sizing: border-box;
+}
+
 .track-content {
-  margin-top: 2.5rem;
+  margin-top: 0;
+  width: 100%;
 }
 
 .track-content-header {
@@ -1536,10 +1586,10 @@ main {
   width: 100%;
   overflow-x: visible;
   overflow-y: visible;
-  gap: 1rem;
-  padding: 1rem;
-  background: #f5f5f5; /* Light grey background */
-  border-radius: 20px;
+  gap: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
   align-items: stretch;
 }
 
@@ -1550,18 +1600,19 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 1.5rem 1.5rem;
-  padding-bottom: 1.5rem;
+  padding: 0;
   cursor: pointer;
-  transition: flex 0.6s ease, box-shadow 0.6s ease;
-  overflow: visible;
+  transition: flex 0.6s ease, max-height 0.6s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
-  opacity: 0.9;
+  opacity: 1;
   min-width: 150px;
   flex-shrink: 0;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 4px 0 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  box-shadow: none;
   align-self: stretch;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Diagonal stripe pattern overlay */
@@ -1581,7 +1632,7 @@ main {
   );
   pointer-events: none;
   z-index: 1;
-  border-radius: 16px;
+  border-radius: 0;
 }
 
 /* Active panel expands */
@@ -1590,35 +1641,35 @@ main {
   opacity: 1;
   cursor: default;
   justify-content: flex-start;
-  padding-top: 4rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 4px 0 12px rgba(0, 0, 0, 0.15);
+  padding-top: 0;
+  box-shadow: none;
+  max-height: 600px;
 }
 
-/* Panel Title */
+/* Panel Title - Centered like in the image */
 .panel-title {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
   font-weight: 700;
   color: #fff;
   margin: 0;
   white-space: nowrap;
-  text-align: right; /* RTL: start alignment */
-  position: absolute;
-  top: 50%;
+  text-align: center;
+  position: relative;
+  top: auto;
   left: auto;
-  right: 2rem;
-  transform: translateY(-50%);
+  right: auto;
+  transform: none;
   z-index: 2;
   transition: all 0.6s ease;
-  width: auto;
+  width: 100%;
+  padding: 2rem 2rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Active panel title moves to top */
+/* Active panel title stays centered at top */
 .track-content-panel.active .panel-title {
-  top: 2rem;
-  right: 2rem;
-  transform: translateY(0);
-  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  padding: 2rem 2rem 1rem 2rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
 }
 
 /* Panel Description - Only visible when panel is active */
@@ -1626,20 +1677,20 @@ main {
   font-size: clamp(0.9rem, 1.4vw, 1.1rem);
   color: rgba(255, 255, 255, 0.9);
   margin: 0;
-  text-align: right;
+  text-align: center;
   line-height: 1.8;
-  position: absolute;
-  top: 4rem;
-  right: 2rem;
-  left: 2rem;
-  transform: translateY(0);
+  position: relative;
+  top: auto;
+  right: auto;
+  left: auto;
+  transform: none;
   z-index: 2;
   transition: all 0.6s ease;
   opacity: 0;
   pointer-events: none;
-  max-width: 600px;
+  max-width: 100%;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  padding-top: 0.75rem;
+  padding: 0 2rem 1rem 2rem;
 }
 
 /* Hide description in collapsed panels */
@@ -1676,9 +1727,9 @@ main {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
-  max-width: 1000px;
-  margin-top: 1.5rem;
-  padding: 2.5rem 1rem 1rem 1rem;
+  max-width: 100%;
+  margin-top: 0;
+  padding: 1.5rem;
   position: relative;
   z-index: 2;
   box-sizing: border-box;
@@ -1701,14 +1752,40 @@ main {
 /* Override old track-category styles for panels - desktop */
 .track-content-panel.track-category {
   display: flex !important;
-  max-height: none !important;
-  overflow: visible !important;
   position: relative;
 }
 
 /* Ensure panels are always in the layout flow */
 .track-content-panel {
-  min-height: 500px;
+  min-height: 250px;
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar for panels */
+.track-content-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.track-content-panel::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.track-content-panel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.track-content-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Firefox scrollbar */
+.track-content-panel {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
 }
 
 /* Mobile/Tablet: accordion behavior */
@@ -1753,12 +1830,17 @@ main {
     display: none; /* Hide progress bar on mobile */
   }
 
+  .track-content-wrapper {
+    padding: 0 2vw;
+    margin-top: 1rem;
+  }
+
   .track-content {
     max-height: 70vh;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    margin-top: 1rem;
+    margin-top: 0;
   }
 
   /* Mobile: Use vertical stacked panels like the photo */
@@ -2186,6 +2268,29 @@ main > section:not(:first-child) {
 
 .team .profile > div:last-child {
   flex: 1;
+}
+
+/* Profile cards without avatar - centered text */
+.card.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.card.profile > div {
+  width: 100%;
+  text-align: center;
+}
+
+.card.profile h4 {
+  text-align: center;
+}
+
+.card.profile p {
+  text-align: center;
 }
 
 .join-section {
@@ -3370,13 +3475,7 @@ select {
 }
 
 .team-member-separator {
-  width: 100%;
-  height: 90px;
-  margin: 0rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.9;
+  display: none;
 }
 
 .team-member-separator img {
