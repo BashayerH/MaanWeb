@@ -143,6 +143,9 @@
     delay: 100
   });
 
+  // Exclude track-content-panels-container from ScrollReveal animation
+  sr.clean('.track-content-panels-container');
+
   // Community section animations
   sr.reveal('.community-card', {
     interval: 200,
