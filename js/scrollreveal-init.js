@@ -32,11 +32,18 @@
     distance: '50px'
   });
 
-  sr.reveal('.card', {
-    interval: 200,
-    origin: 'bottom',
-    distance: '60px',
-    delay: 100
+  // Reveal cards, but exclude those inside track-content-panels-container
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    const isInPanelsContainer = card.closest('.track-content-panels-container');
+    if (!isInPanelsContainer) {
+      sr.reveal(card, {
+        interval: 200,
+        origin: 'bottom',
+        distance: '60px',
+        delay: 100
+      });
+    }
   });
 
   // About page specific animations
@@ -136,15 +143,21 @@
     distance: '60px'
   });
 
-  sr.reveal('.track-category', {
-    interval: 150,
-    origin: 'bottom',
-    distance: '60px',
-    delay: 100
+  // Only reveal track-category elements that are NOT inside track-content-panels-container
+  // This prevents ScrollReveal from animating the panels on mobile
+  const trackCategories = document.querySelectorAll('.track-category');
+  trackCategories.forEach(category => {
+    // Check if this category is inside track-content-panels-container
+    const isInPanelsContainer = category.closest('.track-content-panels-container');
+    if (!isInPanelsContainer) {
+      sr.reveal(category, {
+        interval: 150,
+        origin: 'bottom',
+        distance: '60px',
+        delay: 100
+      });
+    }
   });
-
-  // Exclude track-content-panels-container from ScrollReveal animation
-  sr.clean('.track-content-panels-container');
 
   // Community section animations
   sr.reveal('.community-card', {
@@ -183,11 +196,17 @@
     distance: '50px'
   });
 
-  // Headings
-  sr.reveal('h1, h2, h3, h4', {
-    delay: 150,
-    origin: 'bottom',
-    distance: '60px'
+  // Reveal headings, but exclude those inside track-content-panels-container
+  const headings = document.querySelectorAll('h1, h2, h3, h4');
+  headings.forEach(heading => {
+    const isInPanelsContainer = heading.closest('.track-content-panels-container');
+    if (!isInPanelsContainer) {
+      sr.reveal(heading, {
+        delay: 150,
+        origin: 'bottom',
+        distance: '60px'
+      });
+    }
   });
 
   // Lists
