@@ -1386,11 +1386,17 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  text-decoration: none;
+}
+
+a.zakat-hero-btn {
+  text-decoration: none;
 }
 
 .zakat-hero-btn:hover {
   background: var(--secondary);
   color: #fff;
+  text-decoration: none;
 }
 
 .zakat-hero-btn svg {
