@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>زكاة علم | معن</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=1.0.0">
 </head>
 <body class="zakat-page">
   <header class="topbar">
@@ -64,44 +64,25 @@
         <h4 class="latest-video-title">آخر فيديو تم إضافته</h4>
       </div>
 
-      <div class="video-content-layout">
+      <div class="video-content-layout zakat-video-layout">
         <div class="video-main">
           <div class="video-player-wrapper">
             <div class="video-player">
-              <!-- Option 1: HTML5 Video (for self-hosted videos) -->
-              <div class="video-container">
-                <video 
-                  id="main-video" 
-                  class="video-element" 
-                  poster="./assets/videos/thumbnail.jpg" 
-                  controls
-                  preload="metadata"
-                >
-                  <source src="./assets/videos/video.mp4" type="video/mp4">
-                  <source src="./assets/videos/video.webm" type="video/webm">
-                  متصفحك لا يدعم تشغيل الفيديو.
-                </video>
-                <div class="video-overlay" id="video-overlay">
-                  <div class="video-badge">
-                    <span>زكاة علم</span>
-                  </div>
-                  <button class="video-play-btn" id="play-btn" aria-label="تشغيل الفيديو">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
-                    </svg>
-                  </button>
-                  <button class="video-copy-link" id="copy-link-btn" aria-label="نسخ الرابط">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M10.5 1H3.5C2.67 1 2 1.67 2 2.5V9.5H3.5V2.5H10.5V1ZM12.5 3H5.5C4.67 3 4 3.67 4 4.5V13.5C4 14.33 4.67 15 5.5 15H12.5C13.33 15 14 14.33 14 13.5V4.5C14 3.67 13.33 3 12.5 3ZM12.5 13.5H5.5V4.5H12.5V13.5Z" fill="currentColor"/>
-                    </svg>
-                    <span>نسخ الرابط</span>
-                  </button>
-                </div>
+              <!-- YouTube Video Embed -->
+              <div class="youtube-container">
+                <iframe 
+                  id="main-video"
+                  src="https://www.youtube.com/embed/GPpJEjE9kaw" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen
+                  loading="lazy"
+                ></iframe>
               </div>
             </div>
             <div class="video-details">
-              <h4>Critical care </h4>
-              <p class="muted">شرح شامل للمفاهيم الأساسية في تمريض رعاية الحالات الحرجة.</p>
+              <h4>Medical surgical 3 </h4>
+              <p class="muted">Ch 8&9 hemological disorder</p>
             </div>
           </div>
         </div>
@@ -157,13 +138,13 @@
       <div class="media-grid">
         <article class="media-card">
           <div class="media-visual">
-            <img src="./assets/images/Medicalsurgical .PNG" alt="Medical surgical 3" loading="lazy">
+            <img src="./assets/images/midical_surg2.PNG" alt="Medical surgical 3" loading="lazy">
           </div>
           <div class="media-body">
             <h4>Medical surgical 3 </h4>
             <p class="muted"> 3 تمريض الباطنة والجراحة </p>
             <div class="media-actions">
-              <button class="solid">شاهد الآن</button>
+              <button class="solid" onclick="window.location.href='video.html?video=video1'">شاهد الآن</button>
             </div>
           </div>
         </article>
@@ -175,7 +156,7 @@
             <h4>Critical care </h4>
             <p class="muted">تمريض رعاية الحالات الحرجة</p>
             <div class="media-actions">
-              <button class="solid">شاهد الآن</button>
+              <button class="solid" onclick="window.location.href='video.html?video=video2'">شاهد الآن</button>
             </div>
           </div>
         </article>
@@ -187,7 +168,7 @@
             <h4>Research </h4>
             <p class="muted"> البحث في التمريض </p>
             <div class="media-actions">
-              <button class="solid">شاهد الآن</button>
+              <button class="solid" onclick="window.location.href='video.html?video=video3'">شاهد الآن</button>
             </div>
           </div>
         </article>
@@ -333,52 +314,7 @@
       });
     }
 
-    // Video Player Functionality
-    const video = document.getElementById("main-video");
-    const playBtn = document.getElementById("play-btn");
-    const videoOverlay = document.getElementById("video-overlay");
-    const copyLinkBtn = document.getElementById("copy-link-btn");
-
-    if (video && playBtn && videoOverlay) {
-      // Play button click
-      playBtn.addEventListener("click", () => {
-        video.play();
-        videoOverlay.style.display = "none";
-      });
-
-      // Show overlay when video is paused
-      video.addEventListener("pause", () => {
-        videoOverlay.style.display = "flex";
-      });
-
-      // Hide overlay when video is playing
-      video.addEventListener("play", () => {
-        videoOverlay.style.display = "none";
-      });
-
-      // Copy link functionality
-      if (copyLinkBtn) {
-        copyLinkBtn.addEventListener("click", () => {
-          const videoUrl = window.location.href;
-          navigator.clipboard.writeText(videoUrl).then(() => {
-            copyLinkBtn.innerHTML = `
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.5 1.5L5.5 9.5M5.5 1.5L13.5 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              <span>تم النسخ!</span>
-            `;
-            setTimeout(() => {
-              copyLinkBtn.innerHTML = `
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10.5 1H3.5C2.67 1 2 1.67 2 2.5V9.5H3.5V2.5H10.5V1ZM12.5 3H5.5C4.67 3 4 3.67 4 4.5V13.5C4 14.33 4.67 15 5.5 15H12.5C13.33 15 14 14.33 14 13.5V4.5C14 3.67 13.33 3 12.5 3ZM12.5 13.5H5.5V4.5H12.5V13.5Z" fill="currentColor"/>
-                </svg>
-                <span>نسخ الرابط</span>
-              `;
-            }, 2000);
-          });
-        });
-      }
-    }
+    // YouTube video embed - controls handled by YouTube
   </script>
 
   <div id="footer-placeholder"></div>

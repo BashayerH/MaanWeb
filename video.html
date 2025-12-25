@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical surgical 3 - زكاة علم | معن</title>
+  <link rel="stylesheet" href="styles.css?v=1.0.0">
+</head>
+<body class="zakat-page">
+  <header class="topbar">
+    <button class="menu-toggle" aria-label="القائمة" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <a href="index.html" class="logo" aria-label="الشعار">
+      <img src="./assets/images/LOGO_colored.png" alt="شعار معن" class="logo-img" id="logo-img" loading="lazy">
+    </a>
+    <nav class="nav-links" aria-label="روابط رئيسية" id="nav-links">
+      <a href="index.html#tracks">المسارات</a>
+      <a href="index.html#community">مجتمعنا</a>
+      <a href="about.html">عن معَن</a>
+      <a href="#footer-placeholder">تواصل معنا</a>
+    </nav>
+    <a href="index.html" class="logo-text">معن | Maan</a>
+  </header>
+
+  <main>
+    <section class="section-block" style="margin-top: 100px;">
+      <div class="video-content-layout">
+        <!-- Left Sidebar - Videos List -->
+        <div class="video-sidebar videos-sidebar">
+          <h5 class="sidebar-heading">المواد المتاحة</h5>
+          <nav class="video-nav" id="videos-nav">
+            <!-- Videos will be dynamically added here -->
+          </nav>
+        </div>
+
+        <!-- Right Side - Video Player and Comments -->
+        <div class="video-main" id="video-main-section">
+          <div class="video-player-wrapper">
+            <div class="video-player">
+              <!-- YouTube Video Embed -->
+              <div class="youtube-container">
+                <iframe 
+                  id="main-video"
+                  src="" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
+            <div class="video-details">
+              <h4 id="video-title">اختر مادة لمشاهدة الفيديو</h4>
+              <p class="muted" id="video-description"></p>
+              <div class="lessons-list-container" id="lessons-list-container" style="margin-top: 1.5rem; display: none;">
+                <h5 style="font-size: 1rem; font-weight: 600; color: var(--primary); margin-bottom: 1rem;">الدروس الأخرى</h5>
+                <div class="lessons-scroll-list" id="lessons-scroll-list">
+                  <!-- Lessons will be dynamically added here -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comments Section -->
+          <div class="comments-section" style="margin-top: 3rem;">
+            <div class="section-heading">
+              <h3>التعليقات</h3>
+            </div>
+
+            <!-- Comment Form -->
+            <div class="comment-form" style="background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 16px rgba(18, 58, 87, 0.08);">
+              <h4 style="margin: 0 0 1.5rem 0; font-size: 1.2rem; font-weight: 700; color: var(--primary);">أضف تعليقاً</h4>
+              <form id="comment-form">
+                <div style="margin-bottom: 1.5rem;">
+                  <label for="comment-name" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary);">الاسم</label>
+                  <input 
+                    type="text" 
+                    id="comment-name" 
+                    name="name" 
+                    required
+                    style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; font-family: inherit;"
+                  >
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                  <label for="comment-text" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary);">التعليق</label>
+                  <textarea 
+                    id="comment-text" 
+                    name="comment" 
+                    rows="5" 
+                    required
+                    style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; font-family: inherit; resize: vertical;"
+                  ></textarea>
+                </div>
+                <button type="submit" class="solid" style="width: 100%;">
+                  نشر التعليق
+                </button>
+              </form>
+            </div>
+
+            <!-- Comments List -->
+            <div class="comments-list" id="comments-list">
+              <!-- Comments will be dynamically added here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // Function to update logo based on screen size
+    const updateLogo = () => {
+      const logoImg = document.getElementById("logo-img");
+      const isMobile = window.innerWidth <= 968;
+      
+      if (isMobile) {
+        logoImg.src = "./assets/images/LOGO_mobile_colore_black.svg";
+      } else {
+        logoImg.src = "./assets/images/LOGO_colored.png";
+      }
+    };
+
+    // Update logo on load and resize
+    updateLogo();
+    window.addEventListener("resize", updateLogo);
+
+    // Topbar scroll effect
+    const topbar = document.querySelector('.topbar');
+
+    window.addEventListener('scroll', () => {
+      const isMobile = window.innerWidth <= 968;
+      if (!isMobile) {
+        if (window.scrollY > 50) {
+          topbar.classList.add('scrolled');
+        } else {
+          topbar.classList.remove('scrolled');
+        }
+      }
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    // Function to close menu
+    const closeMenu = () => {
+      if (menuToggle) {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+      }
+    };
+
+    if (menuToggle) {
+      menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          closeMenu();
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        const isClickInsideMenu = navLinks.contains(e.target) || 
+                                  menuToggle.contains(e.target);
+        
+        if (!isClickInsideMenu && navLinks.classList.contains('active')) {
+          closeMenu();
+        }
+      });
+
+      // Prevent menu from closing when clicking inside it
+      navLinks.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+    }
+
+    // Videos data
+    const videos = [
+      {
+        id: 'video1',
+        title: 'Medical surgical 3',
+        description: 'Ch 8&9 hemological disorder',
+        youtubeId: 'GPpJEjE9kaw',
+        thumbnail: './assets/images/midical_surg2.PNG',
+        comingSoon: false,
+        lessons: [
+          { title: 'Ch 1: Introduction', comingSoon: true },
+          { title: 'Ch 2: Basic Concepts', comingSoon: true },
+          { title: 'Ch 3: Advanced Topics', comingSoon: true },
+          { title: 'Ch 4: Case Studies', comingSoon: true },
+          { title: 'Ch 5: Review Session', comingSoon: true }
+        ]
+      },
+      {
+        id: 'video2',
+        title: 'Critical care',
+        description: 'تمريض رعاية الحالات الحرجة',
+        youtubeId: '',
+        thumbnail: './assets/images/Critical_care.PNG',
+        comingSoon: true,
+        lessons: []
+      },
+      {
+        id: 'video3',
+        title: 'Research',
+        description: 'البحث في التمريض',
+        youtubeId: '',
+        thumbnail: './assets/images/Research.PNG',
+        comingSoon: true,
+        lessons: []
+      }
+    ];
+
+    let currentVideoId = null;
+
+    // Display videos in sidebar navigation
+    function displayVideosList() {
+      const videosNav = document.getElementById('videos-nav');
+      videosNav.innerHTML = '';
+      
+      // Check URL parameter for which video to load
+      const urlParams = new URLSearchParams(window.location.search);
+      const videoParam = urlParams.get('video');
+      let defaultVideoIndex = 0;
+      
+      if (videoParam) {
+        const videoIndex = videos.findIndex(v => v.id === videoParam);
+        if (videoIndex !== -1) {
+          defaultVideoIndex = videoIndex;
+        }
+      }
+      
+      videos.forEach((video, index) => {
+        const navItem = document.createElement('a');
+        navItem.href = '#';
+        navItem.className = 'video-nav-item';
+        if (index === defaultVideoIndex) {
+          navItem.classList.add('active');
+          // Load default video
+          setTimeout(() => loadVideo(video.id), 100);
+        }
+        navItem.onclick = (e) => {
+          e.preventDefault();
+          loadVideo(video.id);
+          // Update active state
+          document.querySelectorAll('.video-nav-item').forEach(item => item.classList.remove('active'));
+          navItem.classList.add('active');
+        };
+        
+        navItem.innerHTML = `
+          <span class="nav-dot"></span>
+          <span>${video.title}${video.comingSoon ? ' <span class="soon-badge" style="font-size: 0.75rem; background: rgba(255, 184, 1, 0.2); color: #F8BA01; padding: 0.2rem 0.5rem; border-radius: 4px; margin-right: 0.5rem;">قريباً</span>' : ''}</span>
+        `;
+        
+        videosNav.appendChild(navItem);
+      });
+    }
+
+    // Load video and show player
+    function loadVideo(videoId) {
+      const video = videos.find(v => v.id === videoId);
+      if (!video) return;
+
+      currentVideoId = videoId;
+      
+      // Update video iframe
+      const iframe = document.getElementById('main-video');
+      const videoContainer = iframe.closest('.youtube-container');
+      
+      if (video.comingSoon || !video.youtubeId) {
+        // Show coming soon message instead of video
+        videoContainer.innerHTML = `
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: #000; color: #fff; padding: 3rem;">
+            <h3 style="margin: 0 0 1rem 0; font-size: 1.5rem;">قريباً</h3>
+            <p style="margin: 0; font-size: 1rem; opacity: 0.8;">سيتم إضافة الفيديو قريباً</p>
+          </div>
+        `;
+      } else {
+        // Reset container and add iframe
+        videoContainer.innerHTML = '';
+        const newIframe = document.createElement('iframe');
+        newIframe.id = 'main-video';
+        newIframe.src = `https://www.youtube.com/embed/${video.youtubeId}`;
+        newIframe.frameBorder = '0';
+        newIframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        newIframe.allowFullscreen = true;
+        newIframe.loading = 'lazy';
+        videoContainer.appendChild(newIframe);
+      }
+      
+      // Update video details
+      document.getElementById('video-title').innerHTML = video.title + (video.comingSoon ? ' <span class="soon-badge" style="font-size: 0.9rem; background: rgba(255, 184, 1, 0.2); color: #F8BA01; padding: 0.3rem 0.6rem; border-radius: 4px; margin-right: 0.5rem;">قريباً</span>' : '');
+      document.getElementById('video-description').textContent = video.description;
+      
+      // Display lessons list if available
+      const lessonsContainer = document.getElementById('lessons-list-container');
+      const lessonsList = document.getElementById('lessons-scroll-list');
+      
+      if (video.lessons && video.lessons.length > 0) {
+        lessonsContainer.style.display = 'block';
+        lessonsList.innerHTML = '';
+        
+        video.lessons.forEach((lesson, index) => {
+          const lessonItem = document.createElement('div');
+          lessonItem.className = 'lesson-item';
+          lessonItem.style.cssText = 'padding: 0.75rem 1rem; margin-bottom: 0.5rem; background: rgba(18, 58, 87, 0.03); border: 1px solid var(--border); border-radius: 8px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background 0.2s ease;';
+          lessonItem.style.cursor = lesson.comingSoon ? 'default' : 'pointer';
+          lessonItem.style.opacity = lesson.comingSoon ? '0.6' : '1';
+          
+          lessonItem.innerHTML = `
+            <span style="font-size: 0.9rem; color: var(--text);">${lesson.title}</span>
+            ${lesson.comingSoon ? '<span class="soon-badge" style="font-size: 0.7rem; background: rgba(255, 184, 1, 0.2); color: #F8BA01; padding: 0.2rem 0.4rem; border-radius: 4px;">قريباً</span>' : ''}
+          `;
+          
+          if (!lesson.comingSoon) {
+            lessonItem.addEventListener('mouseenter', () => {
+              lessonItem.style.background = 'rgba(18, 58, 87, 0.08)';
+            });
+            lessonItem.addEventListener('mouseleave', () => {
+              lessonItem.style.background = 'rgba(18, 58, 87, 0.03)';
+            });
+          }
+          
+          lessonsList.appendChild(lessonItem);
+        });
+      } else {
+        lessonsContainer.style.display = 'none';
+      }
+      
+      // Load comments for this video (only if not coming soon)
+      const commentFormDiv = document.querySelector('.comment-form');
+      const commentForm = document.getElementById("comment-form");
+      if (!video.comingSoon) {
+        displayComments();
+        if (commentFormDiv) {
+          commentFormDiv.style.display = 'block';
+        }
+        if (commentForm) {
+          commentForm.querySelector('button[type="submit"]').disabled = false;
+        }
+      } else {
+        commentsList.innerHTML = '<p style="text-align: center; color: var(--muted); padding: 2rem;">التعليقات ستكون متاحة عند إضافة الفيديو</p>';
+        if (commentFormDiv) {
+          commentFormDiv.style.display = 'none';
+        }
+      }
+    }
+
+    // Comments functionality
+    const commentForm = document.getElementById("comment-form");
+    const commentsList = document.getElementById("comments-list");
+
+    function getComments() {
+      if (!currentVideoId) return [];
+      const allComments = JSON.parse(localStorage.getItem("video-comments")) || {};
+      return allComments[currentVideoId] || [];
+    }
+
+    function saveComments(comments) {
+      if (!currentVideoId) return;
+      const allComments = JSON.parse(localStorage.getItem("video-comments")) || {};
+      allComments[currentVideoId] = comments;
+      localStorage.setItem("video-comments", JSON.stringify(allComments));
+    }
+
+    // Display existing comments
+    function displayComments() {
+      commentsList.innerHTML = "";
+      const comments = getComments();
+      
+      if (comments.length === 0) {
+        commentsList.innerHTML = '<p style="text-align: center; color: var(--muted); padding: 2rem;">لا توجد تعليقات بعد. كن أول من يعلق!</p>';
+        return;
+      }
+
+      comments.forEach((comment, index) => {
+        const commentDiv = document.createElement("div");
+        commentDiv.className = "comment-item";
+        commentDiv.style.cssText = "background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(18, 58, 87, 0.06);";
+        
+        commentDiv.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
+            <h5 style="margin: 0; font-size: 1rem; font-weight: 700; color: var(--primary);">${comment.name}</h5>
+            <span style="font-size: 0.85rem; color: var(--muted);">${new Date(comment.date).toLocaleDateString('ar-SA')}</span>
+          </div>
+          <p style="margin: 0; color: var(--text); line-height: 1.7; white-space: pre-wrap;">${comment.text}</p>
+        `;
+        
+        commentsList.appendChild(commentDiv);
+      });
+    }
+
+    // Handle comment form submission
+    if (commentForm) {
+      commentForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        if (!currentVideoId) {
+          alert('يرجى اختيار فيديو أولاً');
+          return;
+        }
+        
+        const name = document.getElementById("comment-name").value.trim();
+        const text = document.getElementById("comment-text").value.trim();
+        
+        if (name && text) {
+          const comments = getComments();
+          const newComment = {
+            name: name,
+            text: text,
+            date: new Date().toISOString()
+          };
+          
+          comments.unshift(newComment); // Add to beginning
+          saveComments(comments);
+          
+          commentForm.reset();
+          displayComments();
+        }
+      });
+    }
+
+    // Initial display
+    displayVideosList();
+  </script>
+
+  <!-- ScrollReveal.js -->
+  <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+  <script src="./js/scrollreveal-init.js"></script>
+  <script src="./js/footer.js"></script>
+</body>
+</html>
+

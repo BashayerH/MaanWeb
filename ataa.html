@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بصمة عطاء - مبادرة معَن</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="zakat-page">
+  <header class="topbar">
+    <button class="menu-toggle" aria-label="القائمة" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <a href="index.html" class="logo" aria-label="الشعار">
+      <img src="./assets/images/LOGO_colored.png" alt="شعار معن" class="logo-img" id="logo-img" loading="lazy">
+    </a>
+    <nav class="nav-links" aria-label="روابط رئيسية" id="nav-links">
+      <a href="index.html#tracks">المسارات</a>
+      <a href="index.html#community">مجتمعنا</a>
+      <a href="about.html">عن معَن</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+    <a href="index.html" class="logo-text">معن | Maan</a>
+  </header>
+
+  <main>
+    <section class="zakat-hero-split" style="margin-top: 100px;">
+      <div class="zakat-hero-right">
+        <div class="zakat-hero-pattern-left">
+          <img src="./assets/patren/code_04.png" alt="pattern" loading="lazy">
+        </div>
+        <div class="zakat-hero-category">
+          <span>أثر</span>
+          <div class="zakat-hero-divider"></div>
+        </div>
+        <h2 class="zakat-hero-heading">بصمة عطاء</h2>
+        <p class="zakat-hero-description">
+          برنامج لتمكين الطلاب من التطوع الفعال وترك أثر إيجابي في المجتمع الصحي.
+        </p>
+        <div class="zakat-hero-actions">
+          <button class="zakat-hero-btn">
+            <span>شارك</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 1V15M1 8H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block" style="padding: 4rem 4vw; text-align: center;">
+      <div class="section-heading">
+        <h2>قريباً</h2>
+        <p class="muted">هذه الصفحة قيد التطوير وسيتم إطلاقها قريباً</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="./js/footer.js"></script>
+  <script>
+    const updateLogo = () => {
+      const logoImg = document.getElementById("logo-img");
+      const isMobile = window.innerWidth <= 968;
+      
+      if (isMobile) {
+        logoImg.src = "./assets/images/LOGO_mobile_colore_black.svg";
+      } else {
+        logoImg.src = "./assets/images/LOGO_colored.png";
+      }
+    };
+
+    updateLogo();
+    window.addEventListener("resize", updateLogo);
+
+    window.addEventListener("scroll", () => {
+      const topbar = document.querySelector(".topbar");
+      const isMobile = window.innerWidth <= 968;
+      
+      if (!isMobile) {
+        if (window.scrollY > 50) {
+          topbar.classList.add("scrolled");
+        } else {
+          topbar.classList.remove("scrolled");
+        }
+      }
+    });
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    const closeMenu = () => {
+      if (menuToggle) {
+        menuToggle.classList.remove("active");
+        navLinks.classList.remove("active");
+      }
+    };
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        menuToggle.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+
+      navLinks.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          closeMenu();
+        });
+      });
+
+      document.addEventListener("click", (e) => {
+        const isClickInsideMenu = navLinks.contains(e.target) || 
+                                  menuToggle.contains(e.target);
+        
+        if (!isClickInsideMenu && navLinks.classList.contains("active")) {
+          closeMenu();
+        }
+      });
+
+      navLinks.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+    }
+  </script>
+  <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+  <script src="./js/scrollreveal-init.js"></script>
+  <script src="./js/footer.js"></script>
+</body>
+</html>
+

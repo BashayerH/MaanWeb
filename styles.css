@@ -94,10 +94,29 @@
 
 .video-content-layout {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 3fr;
   gap: 2.5rem;
   margin: 3rem 0;
   align-items: start;
+}
+
+/* Zakat page has video-main first, sidebar second - reverse the columns */
+.zakat-video-layout {
+  grid-template-columns: 3fr 1fr;
+}
+
+/* Videos list styling */
+.videos-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 968px) {
+  .videos-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 .video-main {
@@ -266,6 +285,11 @@
   top: 120px;
 }
 
+.videos-sidebar {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
 .sidebar-heading {
   font-size: 1.2rem;
   font-weight: 700;
@@ -300,7 +324,7 @@
 .video-nav-item.active {
   color: var(--secondary);
   font-weight: 600;
-  background: rgba(10, 124, 102, 0.1);
+  background: rgba(18, 58, 87, 0.05);
 }
 
 .nav-dot {
@@ -313,6 +337,51 @@
 
 .video-nav-item.active .nav-dot {
   background: var(--secondary);
+}
+
+/* Lessons scroll list */
+.lessons-list-container {
+  margin-top: 1.5rem;
+}
+
+.lessons-scroll-list {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.lessons-scroll-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lessons-scroll-list::-webkit-scrollbar-track {
+  background: rgba(18, 58, 87, 0.05);
+  border-radius: 3px;
+}
+
+.lessons-scroll-list::-webkit-scrollbar-thumb {
+  background: rgba(18, 58, 87, 0.2);
+  border-radius: 3px;
+}
+
+.lessons-scroll-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(18, 58, 87, 0.3);
+}
+
+.lesson-item {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background: rgba(18, 58, 87, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.lesson-item:hover:not([style*="opacity: 0.6"]) {
+  background: rgba(18, 58, 87, 0.08);
 }
 
 .nav-arrow {
@@ -786,6 +855,75 @@ main {
   z-index: 0;
 }
 
+.hero-slideshow-section::before {
+  display: none;
+}
+
+/* Hero Slideshow Styles for index.html */
+.hero-slideshow-section {
+  position: relative;
+  margin: 0 calc(-1 * 4vw);
+  width: calc(100% + 8vw);
+  max-width: none;
+}
+
+.hero-slideshow-section .hero-slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.hero-slideshow-section .hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+  padding: 0 4vw;
+}
+
+.hero-slideshow-section .hero-slide.hero-slide-active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.hero-slideshow-section .hero-slide-background {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(1.05);
+  width: 100vw;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px);
+}
+
+.hero-slideshow-section .hero-slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(12, 28, 36, 0.78), rgba(10, 124, 102, 0.62)),
+              linear-gradient(90deg, rgba(12, 19, 25, 0.65), rgba(12, 19, 25, 0.35));
+  z-index: 1;
+}
+
+.hero-slideshow-section .hero-slide .hero__text {
+  position: relative;
+  z-index: 2;
+}
+
 .hero-slider::after {
   content: "";
   position: absolute;
@@ -794,9 +932,144 @@ main {
   z-index: 1;
 }
 
-.hero-slider > * {
+.hero-slider > .hero__text {
   position: relative;
   z-index: 2;
+}
+
+.hero-slideshow-controls {
+  position: absolute;
+  bottom: 2rem;
+  right: 4vw;
+  left: auto;
+  transform: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  z-index: 10;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  backdrop-filter: none !important;
+}
+
+.hero-slideshow-section .hero-slideshow-controls {
+  position: absolute;
+  bottom: 2rem;
+  right: 4vw;
+  left: auto;
+  transform: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  z-index: 10;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  backdrop-filter: none !important;
+}
+
+.hero-slideshow-section .hero-slide-prev,
+.hero-slideshow-section .hero-slide-next {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.hero-slideshow-section .hero-slide-prev svg,
+.hero-slideshow-section .hero-slide-next svg {
+  width: 18px;
+  height: 18px;
+}
+
+.hero-slideshow-section .hero-slide-prev:hover,
+.hero-slideshow-section .hero-slide-next:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.hero-slideshow-section .hero-slide-indicators {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.hero-slideshow-section .hero-slide-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.hero-slideshow-section .hero-slide-indicator.hero-slide-indicator-active {
+  background: #fff;
+  border-color: #fff;
+  width: 24px;
+  border-radius: 4px;
+}
+
+@media (max-width: 968px) {
+  .hero-slideshow-section .hero-slideshow-container {
+    height: 100vh;
+    min-height: 100vh;
+  }
+  
+  .hero-slideshow-section .hero-slide {
+    height: 100%;
+    min-height: 100vh;
+  }
+  
+  .hero-slideshow-section .hero-slide-background {
+    height: 100vh;
+    min-height: 100vh;
+  }
+  
+  .hero-slideshow-section .hero-slide-overlay {
+    height: 100vh;
+    min-height: 100vh;
+  }
+  
+  .hero-slideshow-section .hero-slideshow-controls {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0;
+    gap: 0.75rem;
+  }
+  
+  .hero-slideshow-section .hero-slide-prev,
+  .hero-slideshow-section .hero-slide-next {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .hero-slideshow-section .hero-slide-prev svg,
+  .hero-slideshow-section .hero-slide-next svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .hero-slideshow-section .hero-slide-indicator {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .hero-slideshow-section .hero-slide-indicator.hero-slide-indicator-active {
+    width: 20px;
+  }
 }
 
 @keyframes slide-pan {
@@ -1426,6 +1699,276 @@ a.zakat-hero-btn {
   }
 }
 
+/* Hero Slideshow Styles */
+.zakat-hero-slideshow {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  margin: 0 calc(-1 * 4vw);
+  width: calc(100% + 8vw);
+  overflow: hidden;
+}
+
+.hero-slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 4vw;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.hero-slide-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  transform: scale(1.1);
+}
+
+.hero-slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(18, 58, 87, 0.85), rgba(10, 124, 102, 0.75));
+  z-index: 1;
+}
+
+.hero-slide-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  text-align: right;
+  color: #fff;
+  padding: 2rem;
+}
+
+.hero-slide-label {
+  display: inline-block;
+  background: rgba(255, 184, 1, 0.9);
+  color: var(--primary);
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hero-slide-heading {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: #0a7c66;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+}
+
+.hero-slide-description {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #fff;
+  line-height: 1.8;
+  margin: 0 0 2rem 0;
+  max-width: 500px;
+}
+
+.hero-slide-btn {
+  display: inline-block;
+  background: #fff;
+  color: #0a7c66;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.hero-slide-btn:hover {
+  background: #0a7c66;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Removed duplicate rule - using .hero-slideshow-section .hero-slideshow-controls instead */
+
+.hero-slide-prev,
+.hero-slide-next {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-slide-prev:hover,
+.hero-slide-next:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.hero-slide-indicators {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.hero-slide-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.hero-slide-indicator.active {
+  background: #fff;
+  border-color: #fff;
+  width: 30px;
+  border-radius: 5px;
+}
+
+@media (max-width: 968px) {
+  .zakat-hero-slideshow {
+    min-height: 500px;
+  }
+  
+  .hero-slideshow-container {
+    height: 500px;
+  }
+  
+  .hero-slide-content {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+  
+  .hero-slide-heading {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+}
+
+/* About Zakat Section */
+.about-zakat-section {
+  background: #f9f9f9;
+  border-radius: 16px;
+  margin: 3rem 0;
+}
+
+.about-zakat-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+.about-zakat-text h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 2rem 0 1rem 0;
+}
+
+.about-zakat-text h4:first-child {
+  margin-top: 0;
+}
+
+.about-zakat-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.about-zakat-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.about-zakat-text ul li {
+  padding: 0.75rem 0;
+  padding-right: 1.5rem;
+  position: relative;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.about-zakat-text ul li::before {
+  content: "•";
+  position: absolute;
+  right: 0;
+  color: var(--secondary);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.about-zakat-visual {
+  position: relative;
+  height: 100%;
+  min-height: 400px;
+}
+
+.about-zakat-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.about-zakat-pattern img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 968px) {
+  .about-zakat-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .about-zakat-visual {
+    min-height: 300px;
+  }
+}
+
 
 
 .tracks .section-heading {
@@ -1588,6 +2131,7 @@ a.zakat-hero-btn {
 /* Horizontal Panels Container - Expanding Panels Style */
 .track-content-panels-container {
   display: flex;
+  flex-direction: row;
   height: auto;
   width: 100%;
   overflow-x: visible;
@@ -1599,83 +2143,222 @@ a.zakat-hero-btn {
   align-items: stretch;
 }
 
-/* Individual Panel - Expanding Style */
+/* Ensure horizontal layout on desktop/web */
+@media (min-width: 969px) {
+  .track-content-panels-container {
+    flex-direction: row !important;
+    display: flex !important;
+    height: 600px;
+  }
+}
+
+
+/* Individual Panel - Base Styles */
 .track-content-panel {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding: 0;
   cursor: pointer;
-  transition: flex 0.6s ease, max-height 0.6s ease;
-  overflow-y: auto;
-  overflow-x: hidden;
+  transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.4s ease,
+              transform 0.3s ease;
+  overflow: hidden;
   position: relative;
   opacity: 1;
-  min-width: 150px;
-  flex-shrink: 0;
   border-radius: 0;
-  box-shadow: none;
-  align-self: stretch;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   -webkit-overflow-scrolling: touch;
 }
 
-/* Diagonal stripe pattern overlay */
+/* Diagonal stripe pattern effect at top-left only - Mobile only */
 .track-content-panel::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    rgba(255, 255, 255, 0.05) 10px,
-    rgba(255, 255, 255, 0.05) 20px
-  );
-  pointer-events: none;
-  z-index: 1;
-  border-radius: 0;
+  display: none;
 }
 
-/* Active panel expands */
-.track-content-panel.active {
-  flex: 3;
-  opacity: 1;
-  cursor: default;
-  justify-content: flex-start;
-  padding-top: 0;
-  box-shadow: none;
-  max-height: 600px;
+@media (max-width: 968px) {
+  .track-content-panel::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    background: repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 8px,
+      rgba(255, 255, 255, 0.1) 8px,
+      rgba(255, 255, 255, 0.1) 16px
+    );
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.7;
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
+  }
+  
+  .track-content-panel.active::before {
+    opacity: 0.9;
+    width: 180px;
+    height: 180px;
+  }
 }
 
-/* Panel Title - Centered like in the image */
+/* Hover effect on panels */
+.track-content-panel:not(.active):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Desktop hover: slight movement for vertical text */
+@media (min-width: 969px) {
+  .track-content-panel:not(.active):hover .panel-title {
+    transform: translateY(-3px);
+  }
+}
+
+/* Mobile hover: horizontal movement */
+@media (max-width: 968px) {
+  .track-content-panel:not(.active):hover .panel-title {
+    transform: translateX(-5px);
+  }
+}
+
+
+/* Border color transitions on hover and active - handled in media queries */
+
+/* Removed diagonal stripe pattern - using solid colors */
+
+/* Desktop: Horizontal layout with expanding panels */
+@media (min-width: 969px) {
+  .track-content-panel {
+    min-width: 80px;
+    flex: 1;
+    height: 600px;
+    min-height: 600px;
+    max-height: 600px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .track-content-panel:last-child {
+    border-right: none;
+  }
+
+  .track-content-panel.active {
+    flex: 4;
+    opacity: 1;
+    cursor: default;
+    justify-content: flex-start;
+    padding-top: 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transform: translateY(0);
+  }
+
+  .track-content-panel:not(.active) {
+    flex: 1;
+    overflow: hidden;
+  }
+
+}
+
+/* Vertical layout for mobile */
+@media (max-width: 968px) {
+  .track-content-panel {
+    width: 100%;
+    min-height: 80px;
+    max-height: 80px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .track-content-panel:last-child {
+    border-bottom: none;
+  }
+
+  .track-content-panel.active {
+    flex: 0 0 auto;
+    max-height: 2000px;
+  }
+}
+
+/* Panel Title - Base Styles */
 .panel-title {
-  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 700;
   color: #fff;
   margin: 0;
   white-space: nowrap;
-  text-align: center;
   position: relative;
-  top: auto;
-  left: auto;
-  right: auto;
-  transform: none;
   z-index: 2;
-  transition: all 0.6s ease;
-  width: 100%;
-  padding: 2rem 2rem;
+  transition: transform 0.3s ease, 
+              font-size 0.4s ease,
+              padding 0.4s ease,
+              writing-mode 0.4s ease;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Active panel title stays centered at top */
+/* Desktop: All titles horizontal */
+@media (min-width: 969px) {
+  .panel-title {
+    text-align: right;
+    transform: translateX(0);
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Collapsed panels: Horizontal text at top */
+  .track-content-panel:not(.active) .panel-title {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    transform: rotate(0deg);
+    width: 100%;
+    height: auto;
+    padding: 1.5rem 2rem;
+    display: block;
+    text-align: right;
+    white-space: nowrap;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+  }
+
+  /* Active panel: Horizontal text at top */
+  .track-content-panel.active .panel-title {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    transform: rotate(0deg);
+    width: 100%;
+    height: auto;
+    min-width: auto;
+    padding: 1.5rem 2rem 1rem 2rem;
+    text-align: right;
+    display: block;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+  }
+}
+
+/* Mobile: Title is always horizontal */
+@media (max-width: 968px) {
+  .panel-title {
+    text-align: right;
+    width: 100%;
+    padding: 1.5rem 2rem;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+  }
+}
+
+/* Active panel title stays right aligned at top */
 .track-content-panel.active .panel-title {
-  padding: 2rem 2rem 1rem 2rem;
-  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  padding: 1.5rem 2rem 1rem 2rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  text-align: right;
 }
 
 /* Panel Description - Only visible when panel is active */
@@ -1683,16 +2366,19 @@ a.zakat-hero-btn {
   font-size: clamp(0.9rem, 1.4vw, 1.1rem);
   color: rgba(255, 255, 255, 0.9);
   margin: 0;
-  text-align: center;
+  text-align: right;
   line-height: 1.8;
   position: relative;
   top: auto;
   right: auto;
   left: auto;
-  transform: none;
+  transform: translateY(-10px);
   z-index: 2;
-  transition: all 0.6s ease;
+  transition: opacity 0.5s ease 0.2s,
+              transform 0.5s ease 0.2s,
+              visibility 0s linear 0.5s;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
   max-width: 100%;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -1709,19 +2395,23 @@ a.zakat-hero-btn {
 .track-content-panel.active .panel-description {
   opacity: 1;
   visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.5s ease 0.3s,
+              transform 0.5s ease 0.3s,
+              visibility 0s linear 0s;
 }
 
-/* Panel colors based on category */
+/* Panel colors based on category with gradient effect */
+.track-content-panel[data-category="community"] {
+  background: linear-gradient(to right, #2a5f8f, #104694); /* Navy Blue gradient - lighter to darker */
+}
+
 .track-content-panel[data-category="skills"] {
-  background: #2e7063; /* Dark Blue for الأثر / Impact */
+  background: linear-gradient(to right, #1f8a6f, #167764); /* Green gradient - lighter to darker */
 }
 
 .track-content-panel[data-category="leadership"] {
-  background: #F4C430; /* Dark Teal for القيادة / Leadership */
-}
-
-.track-content-panel[data-category="community"] {
-  background: #113a58; /* Yellow/Gold for التعلم / Learning */
+  background: linear-gradient(to right, #f9c82a, #F8BA01); /* Yellow/Orange gradient - lighter to darker */
 }
 
 /* Ensure card-grid inside panels displays correctly */
@@ -1729,10 +2419,11 @@ a.zakat-hero-btn {
   display: grid;
   width: 100%;
   gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+  transform: translateY(30px) scale(0.95);
+  transition: opacity 0.6s ease 0.4s, 
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
   max-width: 100%;
   margin-top: 0;
   padding: 1.5rem;
@@ -1741,12 +2432,37 @@ a.zakat-hero-btn {
   box-sizing: border-box;
 }
 
+/* Smaller cards for leadership and skills panels */
+.track-content-panel[data-category="leadership"] .card-grid,
+.track-content-panel[data-category="skills"] .card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+/* Make card images take full width in track-content panels */
+.track-content-panel .card__visual {
+  width: calc(100% + 2px);
+  margin: 0 -1px;
+  padding: 0;
+}
+
+.track-content-panel .card__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* Show cards in active panel */
 .track-content-panel.active .card-grid {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   display: grid;
 }
+
 
 /* Hide cards in inactive panels */
 .track-content-panel:not(.active) .card-grid {
@@ -1762,11 +2478,11 @@ a.zakat-hero-btn {
 }
 
 /* Ensure panels are always in the layout flow */
-.track-content-panel {
-  min-height: 250px;
-  max-height: 600px;
-  overflow-y: auto;
-  overflow-x: hidden;
+@media (max-width: 968px) {
+  .track-content-panel {
+    min-height: 80px;
+    overflow-x: hidden;
+  }
 }
 
 /* Custom scrollbar for panels */
@@ -1857,32 +2573,37 @@ a.zakat-hero-btn {
   }
 
   .track-content-panel {
-    flex: 1 1 auto !important;
+    flex: 0 0 auto !important;
     width: 100%;
-    min-height: 120px;
-    max-height: 120px;
+    min-height: 80px;
+    max-height: 80px;
     overflow: hidden;
     opacity: 1;
     transform: none;
-    transition: max-height 0.4s ease, opacity 0.3s ease;
+    transition: max-height 0.6s ease, opacity 0.3s ease;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
     position: relative;
+    border-bottom: none;
+  }
+
+  .track-content-panel:last-child {
+    border-bottom: none;
   }
 
   .track-content-panel.active {
-    flex: 1 1 auto !important;
+    flex: 0 0 auto !important;
     max-height: 5000px;
-    overflow: visible;
+    overflow-y: auto;
     opacity: 1;
     padding: 0;
     align-items: stretch;
   }
 
-  /* Panel title on mobile - positioned at right with line below, matching photo */
+  /* Panel title on mobile - positioned at right with line below*/
   .track-content-panel .panel-title {
     position: relative;
     top: auto;
@@ -1897,14 +2618,31 @@ a.zakat-hero-btn {
     padding-bottom: 1.0rem;
     text-align: right;
     width: 100%;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    border-bottom: none;
     display: block;
     box-sizing: border-box;
     line-height: 1.2;
   }
 
-  .track-content-panel.active .panel-title {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  /* Divider with padding on left and right */
+  .track-content-panel .panel-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .track-content-panel.active .panel-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
   }
 
   /* Panel description on mobile - show below divider line when active */
@@ -1994,6 +2732,12 @@ a.zakat-hero-btn {
   position: relative;
 }
 
+/* Smaller card visual for leadership and skills panels */
+.track-content-panel[data-category="leadership"] .card__visual,
+.track-content-panel[data-category="skills"] .card__visual {
+  height: 110px;
+}
+
 .card__visual img {
   width: 100%;
   height: 100%;
@@ -2019,6 +2763,12 @@ a.zakat-hero-btn {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+}
+
+/* Smaller card body for leadership and skills panels */
+.track-content-panel[data-category="leadership"] .card__body,
+.track-content-panel[data-category="skills"] .card__body {
+  padding: 0.75rem;
 }
 
 .card__body h4 {

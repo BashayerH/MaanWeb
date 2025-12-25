@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>مبادرة معَن</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=1.0.0">
+
 </head>
 <body>
   <header class="topbar">
@@ -28,22 +29,57 @@
   </header>
 
   <main>
-    <section class="hero hero-slider hero-fullbleed" id="about">
-      <div class="hero__text">
-        <p class="eyebrow">مبادرة معَن</p>
-        <h1>تمكين المجتمعات بالمعرفة</h1>
-        <p class="lede">
-          تعزيز المعرفة والمهارات المهنية للعاملين والمتطوعين في المجال الصحي عبر برامج تعليمية وتدريب مستمر.
-        </p>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-
-
-          <div class="actions">
-          <a href="about.html" class="hero-cta">اكتشف أكثر</a>
+    <section class="hero hero-slider hero-fullbleed hero-slideshow-section" id="about">
+      <div class="hero-slideshow-container">
+        <!-- Slide 1: Main Initiative -->
+        <div class="hero-slide hero-slide-active" data-slide="0">
+          <div class="hero-slide-background" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80');"></div>
+          <div class="hero-slide-overlay"></div>
+          <div class="hero__text">
+            <p class="eyebrow">مبادرة معَن</p>
+            <h1>تمكين المجتمعات بالمعرفة</h1>
+            <p class="lede">
+              تعزيز المعرفة والمهارات المهنية للعاملين والمتطوعين في المجال الصحي عبر برامج تعليمية وتدريب مستمر.
+            </p>
+            <div class="actions">
+              <a href="#tracks" class="hero-cta">اكتشف أكثر</a>
+            </div>
+          </div>
         </div>
+        
+        <!-- Slide 2: Zakat Program -->
+        <div class="hero-slide" data-slide="1">
+          <div class="hero-slide-background" style="background-image: url('./assets/images/back_0.jpg');"></div>
+          <div class="hero-slide-overlay"></div>
+          <div class="hero__text">
+            <p class="eyebrow">البرامج الحالية</p>
+            <h1>برنامج زكاة علم</h1>
+            <p class="lede">
+              برنامج تفاعلي لتبادل الشروحات والمفاهيم الأساسية للمواد بين الطلاب، بمواد مرئية وتفاعلية مصممة لتمكين التعلم الجماعي.
+            </p>
+            <div class="actions">
+              <a href="zakat.html" class="hero-cta">اكتشف زكاة علم</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slideshow Controls -->
+      <div class="hero-slideshow-controls">
+<!--        <button class="hero-slide-prev" aria-label="السابق">-->
+<!--          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>-->
+<!--          </svg>-->
+        </button>
+        <div class="hero-slide-indicators">
+          <button class="hero-slide-indicator hero-slide-indicator-active" data-slide="0" aria-label="الشريحة 1"></button>
+          <button class="hero-slide-indicator" data-slide="1" aria-label="الشريحة 2"></button>
+        </div>
+<!--        <button class="hero-slide-next" aria-label="التالي">-->
+<!--          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>-->
+<!--          </svg>-->
+<!--        </button>-->
       </div>
     </section>
 
@@ -61,17 +97,17 @@
           <div class="track-content-header">
             <p class="track-content-description" id="track-content-description">تعزيز المعرفة والمهارات المهنية للعاملين والطﻼب في المجال الصحي عبر برامج تعليمية وتقييم مستمر.</p>
           </div>
-          <!-- Horizontal Panels Container -->
+          <!-- Vertical Stacked Panels Container -->
           <div class="track-content-panels-container">
-              <!-- Community Category Panel (التعلم / Learning - Default Active) - THIRD -->
-              <div class="track-content-panel track-category active" data-category="community">
+              <!-- Community Category Panel (التعلم / Learning) - THIRD (Bottom) -->
+              <div class="track-content-panel track-category" data-category="community">
                   <h3 class="panel-title">التعلم</h3>
                   <p class="panel-description">تعزيز المعرفة والمهارات المهنية للعاملين والطﻼب في المجال الصحي عبر برامج تعليمية وتقييم مستمر</p>
                   <div class="card-grid">
                       <a class="card-link" href="zakat.html">
                           <article class="card">
                               <div class="card__visual">
-                                  <img src="./assets/images/back_7.jpg" alt="زكاة علم" loading="lazy">
+                                  <img src="./assets/images/zakat.PNG" alt="زكاة علم" loading="lazy">
                               </div>
                               <div class="card__body">
                                   <p class="eyebrow">تعليم</p>
@@ -83,7 +119,7 @@
                       <a href="rafidah.html" class="card-link">
                           <article class="card">
                               <div class="card__visual">
-                                  <img src="./assets/images/rafidah.jpg" alt="رفيدة" loading="lazy">
+                                  <img src="./assets/images/rafidah.PNG" alt="رفيدة" loading="lazy">
                               </div>
                               <div class="card__body">
                                   <p class="eyebrow">تعليم</p>
@@ -95,79 +131,98 @@
                       <a href="tababa.html" class="card-link">
                           <article class="card">
                               <div class="card__visual">
-                                  <img src="./assets/images/back_9.jpg" alt="طبابة" loading="lazy">
+                                  <img src="./assets/images/tababa.PNG" alt="طبابة" loading="lazy">
                               </div>
                               <div class="card__body">
                                   <p class="eyebrow">تعليم</p>
                                   <h4>طبابة <span class="soon-badge">قريباً</span></h4>
-                                  <p>برامج تهدف إلى خدمة المجتمع وتطوير البيئة المحلية</p>
+                                  <p>برامج تهدف إلى خدمة </p>
+                                  <span></span>
+                                  <span></span>
+                                  <p> المجتمع وتطوير البيئة المحلية</p>
+
+
                               </div>
                           </article>
                       </a>
                   </div>
               </div>
-          <!-- Skills Category Panel (الأثر / Impact) - FIRST -->
-          <div class="track-content-panel track-category" data-category="skills">
-            <h3 class="panel-title">الأثر</h3>
-            <p class="panel-description">تعزيز المشاركة المجتمعية عبر التطوع والحوار وتبادل الخبرات لصناعة أثر مستدام</p>
-            <div class="card-grid">
-              <a class="card-link" href="#">
-                <article class="card">
-                  <div class="card__visual">
-                    <img src="./assets/images/back_7.jpg" alt="بصمة عطاء" loading="lazy">
-                  </div>
-                  <div class="card__body">
-                    <p class="eyebrow">أثر</p>
-                    <h4>بصمة عطاء</h4>
-                    <p>برنامج لتمكين الطﻼب من
-                          التطوع الفعال وترك أثر إيجابي في المجتمع الصحي</p>
-                  </div>
-                </article>
-              </a>
-              <article class="card">
-                <div class="card__visual">
-                  <img src="./assets/images/rafidah.jpg" alt="ملتقى أثر" loading="lazy">
+              <!-- Skills Category Panel (الأثر / Impact) - FIRST (Top) -->
+              <div class="track-content-panel track-category" data-category="skills">
+                <h3 class="panel-title">الأثر</h3>
+                <p class="panel-description">تعزيز المشاركة المجتمعية عبر التطوع والحوار وتبادل الخبرات لصناعة أثر مستدام</p>
+                <div class="card-grid">
+                  <a class="card-link" href="ataa.html">
+                    <article class="card">
+                      <div class="card__visual">
+                        <img src="./assets/images/ataa.PNG" alt="بصمة عطاء" loading="lazy">
+                      </div>
+                      <div class="card__body">
+                        <p class="eyebrow">أثر</p>
+                        <h4>بصمة عطاء</h4>
+                        <p>برنامج لتمكين الطﻼب من
+                              التطوع الفعال وترك أثر إيجابي في المجتمع الصحي</p>
+                      </div>
+                    </article>
+                  </a>
+                  <a class="card-link" href="athar.html">
+                    <article class="card">
+                      <div class="card__visual">
+                        <img src="./assets/images/athar.PNG" alt="ملتقى أثر" loading="lazy">
+                      </div>
+                      <div class="card__body">
+                        <p class="eyebrow">أثر</p>
+                        <h4>ملتقى أثر</h4>
+                        <p>منصة نقاش عامة لجميع
+                          التخصصات لتبادل اﻷفكار
+                          وطرح اﻷسئلة في القطاع
+                          الصحي</p>
+                      </div>
+                    </article>
+                  </a>
                 </div>
-                <div class="card__body">
-                  <p class="eyebrow">أثر</p>
-                  <h4>ملتقى أثر</h4>
-                  <p>منصة نقاش عامة لجميع
-                      التخصصات لتبادل اﻷفكار
-                      وطرح اﻷسئلة في القطاع
-                      الصحي</p>
-                </div>
-              </article>
-            </div>
-          </div>
+              </div>
 
-          <!-- Leadership Category Panel (القيادة / Leadership) - SECOND -->
-          <div class="track-content-panel track-category" data-category="leadership">
-            <h3 class="panel-title">القيادة</h3>
-            <p class="panel-description">تطوير القدرات القيادية ومهارات اتخاذ القرار والعمل
-                الجماعي وبناء هوية شخصية قوية</p>
-            <div class="card-grid">
-              <article class="card">
-                <div class="card__visual placeholder"></div>
-                <div class="card__body">
-                  <p class="eyebrow">القيادة</p>
-                  <h4>معسكر الهوية</h4>
-                  <p>معسكر يركز على تعليم
-                      المهارات والمفاهيم في
-                      التسويق الشخصي</p>
+
+
+              <!-- Leadership Category Panel (القيادة / Leadership) - SECOND (Middle) -->
+              <div class="track-content-panel track-category" data-category="leadership">
+                <h3 class="panel-title">القيادة</h3>
+                <p class="panel-description">تطوير القدرات القيادية ومهارات اتخاذ القرار والعمل
+                    الجماعي وبناء هوية شخصية قوية</p>
+                <div class="card-grid">
+                  <a class="card-link" href="camp.html">
+                    <article class="card">
+                      <div class="card__visual">
+                        <img src="./assets/images/camp.PNG" alt="معسكر الهوية" loading="lazy">
+                      </div>
+                      <div class="card__body">
+                        <p class="eyebrow">القيادة</p>
+                        <h4>معسكر الهوية</h4>
+                        <p>معسكر يركز على تعليم
+                            المهارات والمفاهيم في
+                            التسويق الشخصي</p>
+                      </div>
+                    </article>
+                  </a>
+                  <a class="card-link" href="sunnaa.html">
+                    <article class="card">
+                      <div class="card__visual">
+                        <img src="./assets/images/sunnaa.PNG" alt="صنَّاع" loading="lazy">
+                      </div>
+                      <div class="card__body">
+                        <p class="eyebrow">القيادة</p>
+                        <h4>صنَّاع</h4>
+                        <p>برنامج يهتم بأساسيات مهارات
+                            القيادة العامة ، والمهارات
+                            الخاصة بالمجال الصحي</p>
+                      </div>
+                    </article>
+                  </a>
                 </div>
-              </article>
-              <article class="card">
-                <div class="card__visual placeholder"></div>
-                <div class="card__body">
-                  <p class="eyebrow">القيادة</p>
-                  <h4>صنَّاع</h4>
-                  <p>برنامج يهتم بأساسيات مهارات
-                      القيادة العامة ، والمهارات
-                      الخاصة بالمجال الصحي</p>
-                </div>
-              </article>
-            </div>
-          </div>
+              </div>
+
+
 
 
 
@@ -325,13 +380,13 @@
           // Mobile/Tablet: Accordion behavior
           if (isActive) {
             // Collapse current panel
-            panel.style.maxHeight = '120px';
+            panel.style.maxHeight = '80px';
             panel.style.display = 'flex';
             panel.classList.remove('active');
           } else {
-            // Hide all categories
+            // Collapse all categories
             trackCategories.forEach(cat => {
-              cat.style.maxHeight = '120px';
+              cat.style.maxHeight = '80px';
               cat.style.display = 'flex';
               cat.classList.remove('active');
             });
@@ -344,18 +399,24 @@
             }, 10);
           }
         } else {
-          // Desktop: Horizontal expanding panels with toggle behavior
+          // Desktop: Vertical stacked panels with toggle behavior
           if (isActive) {
             // Collapse current panel
             panel.classList.remove('active');
+            panel.style.maxHeight = '80px';
           } else {
             // Remove active class from all panels (they all stay visible, but only one expands)
             trackCategories.forEach(cat => {
               cat.classList.remove('active');
+              cat.style.maxHeight = '80px';
             });
             
-            // Activate selected panel (it will expand via CSS flex)
+            // Activate selected panel (it will expand via CSS max-height)
             panel.classList.add('active');
+            setTimeout(() => {
+              const height = panel.scrollHeight;
+              panel.style.maxHeight = height + 'px';
+            }, 10);
           }
         }
       });
@@ -379,16 +440,42 @@
             activePanel.style.maxHeight = height + 'px';
           }, 10);
           
-          // Hide all non-active categories
+          // Collapse all non-active categories
           trackCategories.forEach(cat => {
             if (!cat.classList.contains('active')) {
               cat.style.display = 'flex';
-              cat.style.maxHeight = '120px';
+              cat.style.maxHeight = '80px';
             }
           });
         } else {
-          // Desktop: Panel is already visible, just ensure it's active
-          // All panels are visible, active one expands via CSS flex
+          // Desktop: Set up vertical stacked panels
+          activePanel.style.display = 'flex';
+          setTimeout(() => {
+            const height = activePanel.scrollHeight;
+            activePanel.style.maxHeight = height + 'px';
+          }, 10);
+          
+          // Collapse all non-active categories
+          trackCategories.forEach(cat => {
+            if (!cat.classList.contains('active')) {
+              cat.style.display = 'flex';
+              cat.style.maxHeight = '80px';
+            }
+          });
+        }
+      } else {
+        // No active panel - hide description
+        const descriptionElement = document.getElementById('track-content-description');
+        if (descriptionElement) {
+          descriptionElement.style.display = 'none';
+        }
+        
+        // On mobile, ensure all panels are collapsed
+        if (isMobile()) {
+          trackCategories.forEach(cat => {
+            cat.style.display = 'flex';
+            cat.style.maxHeight = '120px';
+          });
         }
       }
     }
@@ -404,11 +491,89 @@
     window.addEventListener('resize', () => {
       initializePanels();
     });
+
+    // Hero Slideshow Functionality
+    let currentHeroSlide = 0;
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    const heroIndicators = document.querySelectorAll('.hero-slide-indicator');
+    const heroPrevBtn = document.querySelector('.hero-slide-prev');
+    const heroNextBtn = document.querySelector('.hero-slide-next');
+    let heroSlideInterval;
+
+    function showHeroSlide(index) {
+      heroSlides.forEach(slide => {
+        slide.classList.remove('hero-slide-active');
+      });
+      heroIndicators.forEach(indicator => {
+        indicator.classList.remove('hero-slide-indicator-active');
+      });
+      
+      if (heroSlides[index]) {
+        heroSlides[index].classList.add('hero-slide-active');
+      }
+      if (heroIndicators[index]) {
+        heroIndicators[index].classList.add('hero-slide-indicator-active');
+      }
+      
+      currentHeroSlide = index;
+    }
+
+    function nextHeroSlide() {
+      const nextIndex = (currentHeroSlide + 1) % heroSlides.length;
+      showHeroSlide(nextIndex);
+    }
+
+    function prevHeroSlide() {
+      const prevIndex = (currentHeroSlide - 1 + heroSlides.length) % heroSlides.length;
+      showHeroSlide(prevIndex);
+    }
+
+    function startHeroSlideshow() {
+      heroSlideInterval = setInterval(nextHeroSlide, 5000);
+    }
+
+    function stopHeroSlideshow() {
+      clearInterval(heroSlideInterval);
+    }
+
+    if (heroNextBtn) {
+      heroNextBtn.addEventListener('click', () => {
+        nextHeroSlide();
+        stopHeroSlideshow();
+        startHeroSlideshow();
+      });
+    }
+
+    if (heroPrevBtn) {
+      heroPrevBtn.addEventListener('click', () => {
+        prevHeroSlide();
+        stopHeroSlideshow();
+        startHeroSlideshow();
+      });
+    }
+
+    heroIndicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        showHeroSlide(index);
+        stopHeroSlideshow();
+        startHeroSlideshow();
+      });
+    });
+
+    const heroSlideshowSection = document.querySelector('.hero-slideshow-section');
+    if (heroSlideshowSection) {
+      heroSlideshowSection.addEventListener('mouseenter', stopHeroSlideshow);
+      heroSlideshowSection.addEventListener('mouseleave', startHeroSlideshow);
+    }
+
+    if (heroSlides.length > 0) {
+      startHeroSlideshow();
+    }
   </script>
   <!-- ScrollReveal.js -->
   <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
-  <script src="./js/scrollreveal-init.js"></script>
-  <script src="./js/footer.js"></script>
+  <script src="./js/scrollreveal-init.js?v=1.0.0"></script>
+  <script src="./js/footer.js?v=1.0.0"></script>
 </body>
 </html>
 
