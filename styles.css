@@ -2863,6 +2863,11 @@ a.zakat-hero-btn {
   gap: 0.75rem;
   flex-wrap: wrap;
   justify-content: flex-end;
+  padding: 1.5rem 0;
+}
+
+.actions .ghost {
+  border-width: 2px;
 }
 
 main > section:not(:first-child) {
