@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Medical surgical 3 - زكاة علم | معن</title>
-  <link rel="stylesheet" href="styles.css?v=1.0.1">
+  <link rel="stylesheet" href="styles.css?v=1.0.2">
 </head>
 <body class="zakat-page">
   <header class="topbar">
@@ -188,17 +188,18 @@
     const videos = [
       {
         id: 'video1',
-        title: 'Medical surgical 3',
+        title: 'Medical surgical 2',
         description: 'Ch 8&9 hemological disorder',
         youtubeId: 'GPpJEjE9kaw',
         thumbnail: './assets/images/midical_surg2.PNG',
         comingSoon: false,
         lessons: [
-          { title: 'Ch 1: Introduction', comingSoon: true },
-          { title: 'Ch 2: Basic Concepts', comingSoon: true },
-          { title: 'Ch 3: Advanced Topics', comingSoon: true },
-          { title: 'Ch 4: Case Studies', comingSoon: true },
-          { title: 'Ch 5: Review Session', comingSoon: true }
+          { title: 'Ch 8&9 hemological disorder', youtubeId: 'GPpJEjE9kaw', comingSoon: false },
+          { title: 'Intestinal obstruction', youtubeId: 'WTOuaA1qxOw', comingSoon: false },
+          { title: 'Hepatic disorder', youtubeId: 'IFUNeGhF0A4', comingSoon: false },
+          { title: 'GI disorder part 1', youtubeId: 'M2MBkPa9UFQ', comingSoon: false },
+          { title: 'Hai disorder part 2', youtubeId: 'NFeT74x1iu4', comingSoon: false },
+          { title: 'Biliary disorder', youtubeId: 'ne3UNSetEgE', comingSoon: false }
         ]
       },
       {
@@ -222,6 +223,11 @@
     ];
 
     let currentVideoId = null;
+    let currentLessonYoutubeId = null;
+
+    // Comments functionality - Define these early so they're available in loadVideo
+    const commentForm = document.getElementById("comment-form");
+    const commentsList = document.getElementById("comments-list");
 
     // Display videos in sidebar navigation
     function displayVideosList() {
@@ -244,6 +250,7 @@
         const navItem = document.createElement('a');
         navItem.href = '#';
         navItem.className = 'video-nav-item';
+        navItem.dataset.videoId = video.id;
         if (index === defaultVideoIndex) {
           navItem.classList.add('active');
           // Load default video
@@ -251,10 +258,18 @@
         }
         navItem.onclick = (e) => {
           e.preventDefault();
-          loadVideo(video.id);
-          // Update active state
-          document.querySelectorAll('.video-nav-item').forEach(item => item.classList.remove('active'));
+          e.stopPropagation();
+          
+          // Remove active class from all items first
+          document.querySelectorAll('.video-nav-item').forEach(item => {
+            item.classList.remove('active');
+          });
+          
+          // Add active class to clicked item
           navItem.classList.add('active');
+          
+          // Load the video
+          loadVideo(video.id);
         };
         
         navItem.innerHTML = `
@@ -272,10 +287,14 @@
       if (!video) return;
 
       currentVideoId = videoId;
+      currentLessonYoutubeId = null; // Reset lesson when loading main video
       
       // Update video iframe
-      const iframe = document.getElementById('main-video');
-      const videoContainer = iframe.closest('.youtube-container');
+      const videoContainer = document.querySelector('.youtube-container');
+      if (!videoContainer) {
+        console.error('Video container not found');
+        return;
+      }
       
       if (video.comingSoon || !video.youtubeId) {
         // Show coming soon message instead of video
@@ -322,7 +341,33 @@
             ${lesson.comingSoon ? '<span class="soon-badge" style="font-size: 0.7rem; background: rgba(255, 184, 1, 0.2); color: #F8BA01; padding: 0.2rem 0.4rem; border-radius: 4px;">قريباً</span>' : ''}
           `;
           
-          if (!lesson.comingSoon) {
+          if (!lesson.comingSoon && lesson.youtubeId) {
+            lessonItem.addEventListener('click', () => {
+              // Set current lesson
+              currentLessonYoutubeId = lesson.youtubeId;
+              
+              // Load the lesson video
+              const iframe = document.getElementById('main-video');
+              const videoContainer = iframe.closest('.youtube-container');
+              videoContainer.innerHTML = '';
+              const newIframe = document.createElement('iframe');
+              newIframe.id = 'main-video';
+              newIframe.src = `https://www.youtube.com/embed/${lesson.youtubeId}`;
+              newIframe.frameBorder = '0';
+              newIframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+              newIframe.allowFullscreen = true;
+              newIframe.loading = 'lazy';
+              videoContainer.appendChild(newIframe);
+              
+              // Update title to show lesson title
+              document.getElementById('video-title').innerHTML = `${video.title} - ${lesson.title}`;
+              // Update description to match lesson title
+              document.getElementById('video-description').textContent = lesson.title;
+              
+              // Load comments for this lesson
+              displayComments();
+            });
+            
             lessonItem.addEventListener('mouseenter', () => {
               lessonItem.style.background = 'rgba(18, 58, 87, 0.08)';
             });
@@ -339,35 +384,36 @@
       
       // Load comments for this video (only if not coming soon)
       const commentFormDiv = document.querySelector('.comment-form');
-      const commentForm = document.getElementById("comment-form");
       if (!video.comingSoon) {
         displayComments();
         if (commentFormDiv) {
           commentFormDiv.style.display = 'block';
         }
         if (commentForm) {
-          commentForm.querySelector('button[type="submit"]').disabled = false;
+          const submitBtn = commentForm.querySelector('button[type="submit"]');
+          if (submitBtn) submitBtn.disabled = false;
         }
       } else {
-        commentsList.innerHTML = '<p style="text-align: center; color: var(--muted); padding: 2rem;">التعليقات ستكون متاحة عند إضافة الفيديو</p>';
+        const commentsListEl = document.getElementById("comments-list");
+        if (commentsListEl) {
+          commentsListEl.innerHTML = '<p style="text-align: center; color: var(--muted); padding: 2rem;">التعليقات ستكون متاحة عند إضافة الفيديو</p>';
+        }
         if (commentFormDiv) {
           commentFormDiv.style.display = 'none';
         }
       }
     }
 
-    // Comments functionality
-    const commentForm = document.getElementById("comment-form");
-    const commentsList = document.getElementById("comments-list");
-
     function getComments() {
       if (!currentVideoId) return [];
+
       const allComments = JSON.parse(localStorage.getItem("video-comments")) || {};
       return allComments[currentVideoId] || [];
     }
 
     function saveComments(comments) {
       if (!currentVideoId) return;
+
       const allComments = JSON.parse(localStorage.getItem("video-comments")) || {};
       allComments[currentVideoId] = comments;
       localStorage.setItem("video-comments", JSON.stringify(allComments));
@@ -375,11 +421,17 @@
 
     // Display existing comments
     function displayComments() {
-      commentsList.innerHTML = "";
+      const commentsListEl = document.getElementById("comments-list");
+      if (!commentsListEl) {
+        console.error("Comments list element not found");
+        return;
+      }
+      
+      commentsListEl.innerHTML = "";
       const comments = getComments();
       
       if (comments.length === 0) {
-        commentsList.innerHTML = '<p style="text-align: center; color: var(--muted); padding: 2rem;">لا توجد تعليقات بعد. كن أول من يعلق!</p>';
+        commentsListEl.innerHTML = '<p style="text-align: center; color: var(--muted); padding: 2rem;">لا توجد تعليقات بعد. كن أول من يعلق!</p>';
         return;
       }
 
@@ -396,7 +448,7 @@
           <p style="margin: 0; color: var(--text); line-height: 1.7; white-space: pre-wrap;">${comment.text}</p>
         `;
         
-        commentsList.appendChild(commentDiv);
+        commentsListEl.appendChild(commentDiv);
       });
     }
 
@@ -432,6 +484,8 @@
 
     // Initial display
     displayVideosList();
+      loadVideo(videos[0].id);
+
   </script>
 
   <!-- ScrollReveal.js -->
